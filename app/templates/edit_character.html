@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name" placeholder="Character Name" value="{{ character.name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="age" placeholder="Age" value="{{ character.age }}" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="description" rows="3" placeholder="Description">{{ character.description }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male" {% if character.gender == 'Male' %}selected{% endif %}>Male</option>
+                                <option value="Female" {% if character.gender == 'Female' %}selected{% endif %}>Female</option>
+                                <option value="Other" {% if character.gender == 'Other' %}selected{% endif %}>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="race" placeholder="Race" value="{{ character.race }}" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="char_class" placeholder="Character Class" value="{{ character.char_class }}" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="creator_id" placeholder="Creator ID" value="{{ character.creator_id }}" required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">
+                            Update Character
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
